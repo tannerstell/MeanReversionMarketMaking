@@ -1,0 +1,22 @@
+
+1. Function that returns buy market spread, ladder spread, sell market spread, and size depending on the free collateral and
+strategy (bollinger: increasing size the closer to the lower bands). The function accepts the type of strategy as a parameter
+
+
+
+Websocket module (where execution of trades takes place)
+1. Server that receives market trades and fills and gets the order id from the fills. The order id is compared to a temporary dictionary with strategies containing a list of order ids. If the filled
+order is strategy-specific, then a sell order will be sent corresponding to the strategy type.
+
+Strategy module
+Data:
+Bollinger function: gets data for bollinger bands
+MACD function: gets data for the macd
+
+1. Market making Bollinger strategy function: The closer the price is to the lower bands, the larger the buy size and sell spread becomes and the smaller the buy spread becomes.
+The size, buy spreads, and sell spreads are calculated via data normalization from
+the minimal size/spread (further away from lower bands) to maximum size/spread (closest to lower bands).
+This function calls the bollinger function to get the data.
+
+2. MACD strategy: If the difference of the MACD and the signal is greater than the previous difference, then long.
+Close if there is a crossover or the percentage gain exceeds a certain threshold.
