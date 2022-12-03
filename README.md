@@ -13,7 +13,7 @@ Requirements.txt - Discusses what I might choose to update next.
 
 launch.bat - Batch launcher script
 
-main.py - Main function calls other files
+main.py - Main function calls other files and uses the multiprocessing library for multithreading capabilities to run the websockets server and multiple trading algorithms simulataneously.
 
 strategy.py - Strategy logic for the market maker
 
